@@ -1,0 +1,39 @@
+<section id="sub_title">
+    <center><h2>Enter rut to see your reservation</h2></center>
+</section>
+<section id="form_reservations">
+    <form action="#" class="form_reservations" method="post">
+        <div class="form_group" id="rut_group">
+            <label class="form_label" for="rut">Rut</label>
+            <div class="form_group_input">
+                <input type="text" class="form_input" id="rut" name="rut" placeholder="12345678-9"required>
+                <i class="validation_state fas fa-times-circle"></i>
+            </div>
+            <p class="form_input_error">Rut must be 9 digits long minimum and can only contain numbers a dash and the letter k </p>
+        </div>
+        <div class="form_message">
+            <p><i class="fa-solid fa-triangle-exclamation"></i> <b>Error:</b> one or more fields are incomplete or incorrect, check them and try again</p>
+        </div>
+        <div class="form_message">
+            <p><i class="fa-solid fa-triangle-exclamation"></i> <b>Error:</b> user does not exist, check inserted data and try again</p>
+        </div>        
+        <div id="getReservations" class="form_group form_group_submit">
+            <button type="submit" class="form_btn" id="getReservation" name="getReservation">Get reservations</button>
+        </div>
+    </form>
+</section>
+<section id="User Reservation" class="table_container">
+    <table>
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Nombre</td>
+                <td>Rut</td>
+                <td>Fecha</td>
+                <td>Hora</td>
+                <td>Email</td>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</section>
