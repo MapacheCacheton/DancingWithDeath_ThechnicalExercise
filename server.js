@@ -5,8 +5,8 @@ import handlebars from 'express-handlebars'
 
 // Routes
 import mainRoutes from './routes/main.js'
-import apiRoutes from './routes/api.js'
-import userRoutes from './routes/usersViews.js'
+import apiRoutes from './routes/apiRoutes.js'
+import userRoutes from './routes/usersRoutes.js'
 
 // Server
 const app = express()

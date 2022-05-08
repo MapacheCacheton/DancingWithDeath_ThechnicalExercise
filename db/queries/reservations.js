@@ -1,5 +1,4 @@
 import pool from "../pool.js";
-import { reorderReservationsData, reorderUsersData } from "../reorder_functions.js"
 
 async function getReservations(){
     const query = `SELECT * FROM reservations Where active = 't';`

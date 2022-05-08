@@ -27,14 +27,15 @@ router.get('/reservation', async(req, res)=>{
         res.status(500).send({message:'Error getting user reservations'})
     }
 })
-router.get('/hours', async(req, res) => {
+router.post('/hours', async(req, res) => {
     const {date} = req.body
+    console.log(date);
     try {
         const hours = await getHoursByDate(date)
         if (!!hours.length) res.status(200).send(JSON.stringify(hours))
-        else res.status(500).send({message:'Error getting available'})
+        else res.status(500).send({available: true})
     } catch (error) {
-        res.status(500).send({message:'Error getting available'})
+        res.status(500).send({message:'Internal server error: Error getting available hours contact the manager or try again later'})
     }
 })
 //Recives a payload and inserts a reservation, returning a success or error response
@@ -74,16 +75,5 @@ router.delete('/reservation', async (req, res)=>{
         res.status(500).send({message:'Error deleting reservation'})
     }
 })
-
-//Only works with second model especified in ../db/migrations/01_create_table_model.sql
-// router.get('/users', async (_, res)=>{
-//     const users = await getUsers()
-//     res.send(JSON.stringify(users))
-// })
-// router.get('/users/:id', async (req, res)=>{
-//     const { id } = req.params
-//     const user = await getUser(id)
-//     res.send(JSON.stringify(user))
-// })
 
 export default router

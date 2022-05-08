@@ -84,6 +84,7 @@ main{
     line-height: 3.55em;
 }
 .form_input_error{
+    color: #bb2929;
     font-size: 1em;
     margin-bottom: 0;
     display: none;
