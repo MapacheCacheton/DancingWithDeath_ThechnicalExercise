@@ -9,8 +9,11 @@ router.get('/', (_, res) => {
     res.render('index', { title: 'Inicio' })
 })
 
-router.get('/css', (_, res)=>{
-    res.sendFile(`${root}/public/css/styles.css`)
+router.get('/css/main', (_, res)=>{
+    res.sendFile(`${root}/public/css/mainStyles.css`)
+})
+router.get('/css/user', (_, res)=>{
+    res.sendFile(`${root}/public/css/userReservationsStyles.css`)
 })
 
 

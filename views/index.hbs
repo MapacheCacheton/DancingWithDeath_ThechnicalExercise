@@ -1,75 +1,14 @@
 <main>
-    <section id="title">
-        <center><h1>Dancing with the devil</h1></center>
-    </section>
-    <section id="main-content"> 
-        <div class="container">
-            <form action="#" method="post" class="form">
-                {{!-- Date --}}
-                <div class="form_group" id="date_group">
-                    <label class="form_label" for="date">Reservation date</label>
-                    <div class="form_group_input">
-                        <input type="date" class="form_input" id="date" name="date" required>
-                        <i class="validation_state fas fa-times-circle"></i>
-                    </div>
-                    <p class="form_input_error">Choose a valid date</p>
-                </div>
-                {{!-- Time --}}
-                <div class="form_group" id="time_group">
-                    <label class="form_label" for="time">Reservation time</label>
-                    <div class="form_group_input">
-                        {{!-- <input type="time" class="form_input" id="time" name="time" value="09:00"required> --}}
-                        <select name="time" id="time" class="form_input form_select" required></select>
-                        <i class="validation_state_reverse fas fa-times-circle"></i>
-                    </div>
-                    <p class="form_input_error">Choose a valid time</p>
-                </div>
-                {{!-- Rut --}}
-                <div class="form_group" id="rut_group">
-                    <label class="form_label" for="rut">Rut</label>
-                    <div class="form_group_input">
-                        <input type="text" class="form_input" id="rut" name="rut" placeholder="12345678-9"required>
-                        <i class="validation_state fas fa-times-circle"></i>
-                    </div>
-                    <p class="form_input_error">Rut must be 9 digits long minimum and can only contain numbers a dash and the letter k </p>
-                </div>
-                {{!-- First name --}}
-                <div class="form_group" id="name_group">
-                    <label class="form_label" for="first_name">First name</label>
-                    <div class="form_group_input">
-                        <input type="text" class="form_input" id="first_name" name="first_name" placeholder="Jhon"required>
-                        <i class="validation_state fas fa-times-circle"></i>
-                    </div>
-                    <p class="form_input_error">Name can only contain letters</p>
-                </div>
-                {{!-- LastName --}}
-                <div class="form_group" id="last_name_group">
-                    <label class="form_label" for="last_name">Last name</label>
-                    <div class="form_group_input">
-                        <input type="text" class="form_input" id="last_name" name="last_name" placeholder="Doe"required>
-                        <i class="validation_state fas fa-times-circle"></i>
-                    </div>
-                    <p class="form_input_error">Last name can only contain letters</p>
-                </div>
-                {{!-- Email --}}
-                <div class="form_group" id="email_group">
-                    <label class="form_label" for="email">Email</label>
-                    <div class="form_group_input">
-                        <input type="email" class="form_input" id="email" name="email" placeholder="JhonDoe@mail.com"required>
-                        <i class="validation_state fas fa-times-circle"></i>
-                    </div>
-                    <p class="form_input_error">Email can only contain letters, numbers, dots, dashes and underscores</p>
-                </div>
-                {{!-- Error message --}}
-                <div class="form_message">
-                    <p><i class="fa-solid fa-triangle-exclamation"></i> <b>Error:</b> one or more fields are incomplete or incorrect, check them and try again</p>
-                </div>
-                {{!-- Submit button --}}
-                <div class="form_group form_group_submit">
-                    <button type="submit" class="form_btn" id="set" name="set">Send reservation</button>
-                    <p class="form_success_message">Reservation sent</p>
-                </div>
-            </form>
+    {{>title}}
+    {{>mainForm}}
+    <section id="user_reservations">
+        <div class="reservation_link">
+            <div class="subtitle_group" id="subtitle">
+                <center><h2>¿Already have a reservation? check it here</h2></center>
+            </div>
+            <div class="check_reservations">
+                <a class="link" href="http://localhost:3000/user-reservations">Check reservations</a>
+            </div>
         </div>
     </section>
 </main>

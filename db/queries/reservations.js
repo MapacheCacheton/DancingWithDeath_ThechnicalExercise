@@ -10,8 +10,17 @@ async function getReservations(){
     }
 }
 
-async function getUserReservations(email){
-    const query = `SELECT * FROM reservations WHERE user_email=${email} AND active = 't';`
+async function getUserReservations(rut){
+    const query = `SELECT * FROM reservations WHERE user_rut='${rut}' AND active = 't' ORDER BY id;`
+    try {
+        const results = await pool.query(query)
+        return results.rows
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+async function getUserReservation(id){
+    const query = `SELECT * FROM reservations WHERE id=${id} AND active = 't';`
     try {
         const results = await pool.query(query)
         return results.rows
@@ -33,10 +42,10 @@ async function getHoursByDate(date){
     }
 }
 
-async function insertReservation({date, start_time, rut, first_name, last_name, email}){
+async function insertReservation({date, time, rut, first_name, last_name, email}){
     const query_obj = {
         text: "INSERT INTO reservations (date, start_time, user_rut, user_name, user_last_name, user_email) VALUES ($1, $2, $3, $4, $5, $6) RETURNING*",
-        values: [date, start_time, rut, first_name, last_name, email]
+        values: [date, time, rut, first_name, last_name, email]
     } 
     try {
         const result = await pool.query(query_obj)
@@ -47,10 +56,10 @@ async function insertReservation({date, start_time, rut, first_name, last_name, 
     }
 }
 
-async function updateReservation({id, date, start_time, rut, first_name, last_name, email}){
+async function updateReservation({id, date, time, rut, first_name, last_name, email}){
     const query_obj = {
         text: `UPDATE reservations SET date = $2, start_time = $3, user_rut = $4, user_name = $5, user_last_name= $6, user_email = $7 WHERE id = $1 RETURNING*`,
-        values: [id, date, start_time, rut, first_name, last_name, email]
+        values: [id, date, time, rut, first_name, last_name, email]
     }
     try {
         const result = await pool.query(query_obj)
@@ -72,4 +81,4 @@ async function deleteReservation(id){
     }
 }
 
-export {getReservations, insertReservation, updateReservation, getUserReservations, deleteReservation, getHoursByDate}
+export {getReservations, insertReservation, updateReservation, getUserReservations, deleteReservation, getHoursByDate, getUserReservation}

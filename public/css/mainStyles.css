@@ -1,5 +1,5 @@
 body{
-    background-image: url("../img/main_background.png");
+    background-image: url("../img/main_background.svg");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -42,14 +42,14 @@ body{
 }
 
 /* Main form styles */
-main{
+#main-content, #user_reservations{
     max-width: 800px;
     width: 90%;
     margin: auto;
     padding: 2em;
 }
 .form {
-    background-color: #1c1c1c80;
+    background-color: #1c1c1cd1;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1em;
@@ -112,9 +112,10 @@ main{
     grid-column: span 2;
 }
 .form_message{
-    height: 3em;
-    line-height: 3em;
+    height: 100%;
+    line-height: 2em;
     background-color: #f66060;
+    overflow: visible;
     padding: 0 1em;
     border-radius: 0.2em;
     display: none;
@@ -124,6 +125,7 @@ main{
 }
 .form_message p{
     margin: 0;
+    padding: 0;
     color: black;
 }
 .form_group_submit{
@@ -156,31 +158,65 @@ main{
     display: block;
 }
 
-/* User view */
+/* check reservations section */
 
-.form_reservations{
+.reservation_link{
     background-color: #1c1c1c80;
     display: grid;
     grid-template-columns: 1fr;
     gap: 1em;
+    margin-top: 2em;
     padding: 2em 3em;
 }
-#getReservations{
-    grid-column: 1;
+
+.reservation_link h2{
+    font-size: 1em;
 }
 
+.check_reservations{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.link{
+    background-color: rgb(38, 101, 220);
+    height: 3em;
+    line-height: 3em;
+    width: 30%;
+    color: white;
+    border: none;
+    border-radius: 0.2em;
+    cursor: pointer;
+    transition: .1s ease all;
+    font-family:sans-serif;
+    font-weight: 700;
+    font-size: .8em;
+    text-align: center;
+    text-decoration: none;
+} 
+.link:hover{
+    box-shadow: .2em 0 2em rgba(163, 163, 163, 1);
+}
 
 
 /* Validation styles */
 
-.form_group_correct .validation_state .validation_state_reverse{
+.form_group_correct .validation_state{
+    color: #1ed12d;
+    opacity: 1;
+}
+.form_group_correct .validation_state_reverse{
     color: #1ed12d;
     opacity: 1;
 }
 .form_group_incorrect .form_label{
     color: #bb2929;
 }
-.form_group_incorrect .validation_state .validation_state_reverse{
+.form_group_incorrect .validation_state{
+    color: #bb2929;
+    opacity: 1;
+}
+.form_group_incorrect .validation_state_reverse{
     color: #bb2929;
     opacity: 1;
 }
@@ -196,7 +232,7 @@ main{
     .form_message, .form_group_submit{
         grid-column: 1;
     }
-    .form_btn{
+    .form_btn, .link{
         width: 100%;
     }
 }
