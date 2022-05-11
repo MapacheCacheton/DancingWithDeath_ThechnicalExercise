@@ -1,4 +1,4 @@
-const url_base = 'http://localhost:3000/api/v1'
+const url_base = './api/v1'
 
 async function getUnavailableHours(date) {
     try {
