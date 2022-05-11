@@ -66,7 +66,6 @@ router.post('/reservation', async (req, res)=>{
 //Recives a payload and modify the reservation info returning a success or error response
 router.put('/reservation', async (req, res)=>{
     const edited_reservation = req.body
-    console.log(edited_reservation);
     try {
         const edited_records = await updateReservation(edited_reservation)
         if (!!edited_records)  res.status(200).send({approved: true})

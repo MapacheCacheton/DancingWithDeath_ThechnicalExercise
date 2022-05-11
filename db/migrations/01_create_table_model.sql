@@ -12,7 +12,7 @@ CREATE TABLE reservations(
     user_name VARCHAR(30) NOT NULL,
     user_last_name VARCHAR(30) NOT NULL,
     user_email VARCHAR(255) NOT NULL,
-    active BOOLEAN NOT NULL DEFAULT (True)--True if reservation is active, false if reservation is inactive/deleted
+    active BOOLEAN NOT NULL DEFAULT (True)--True if the reservation is active, false if reservation is inactive/deleted
 );
 
 -- if in the future we decide to implement this service we should use this other model that follows normalization
@@ -21,7 +21,8 @@ CREATE TABLE reservations(
 -- DROP TABLE IF EXISTS users;
 
 -- CREATE TABLE users(
---     rut NOT NULL,
+--     id SERIAL NOT NULL,
+--     rut VARCHAR(10) NOT NULL,
 --     first_name VARCHAR(30) NOT NULL,
 --     last_name VARCHAR(30) NOT NULL,
 --     email VARCHAR(255) UNIQUE NOT NULL,
@@ -40,5 +41,3 @@ CREATE TABLE reservations(
 --     FOREIGN KEY (user_fk) REFERENCES users(rut)
 -- );
 
-
--- This model also allows the users routes (in api.js) to work and show user info in the endpoints
