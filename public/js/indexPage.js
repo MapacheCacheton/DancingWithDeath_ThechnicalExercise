@@ -1,11 +1,10 @@
-import {ValidateAvailableHours, validateField, renderAvailableHours, validateDate, showErrorMessage} from "./validations.js"
-import { getUnavailableHours, addReservation } from "./apiQuerys.js"
+import {showErrorMessage, identifyField, validatedFields, filterAvailableHours} from "./validations.js"
+import { addReservation } from "./apiQuerys.js"
 import { createPayload } from "./utilities.js"
-import { regex } from "./regex.js"
 
 const main = (function () {
     //Variables
-    const fields = {
+    let fields = {
         date: false,
         rut: false,
         first_name: false,
@@ -15,6 +14,7 @@ const main = (function () {
     //Dom Cache
         const form = document.querySelector('form')
         const inputs = document.querySelectorAll('input:not([type="date"])')
+        const section = document.getElementById('main-content')
     //Events
     form.date.addEventListener('change', getAvailableHours)
     inputs.forEach(input => {
@@ -33,39 +33,14 @@ const main = (function () {
     //Solucionar: 
     async function getAvailableHours(e){
         e.preventDefault()
-        const date = new Date(this.value) 
-        const current_date = new Date(Date.now())
-        if(validateDate(date, current_date)){
-            fields.date = true
-            const hours = await getUnavailableHours(date)
-            if(!!hours[0]){
-                const available_hours = ValidateAvailableHours(hours)
-                renderAvailableHours(available_hours)
-            }
-            else if(hours.available) renderAvailableHours()
-            else showErrorMessage(hours.message)
-        }
+        await filterAvailableHours(this)
+        fields = validatedFields()
     }
 
     function validateForm(e) {
-        switch(e.target.name){
-            case 'rut':{
-                fields.rut = validateField(regex.rut, e.target, e.target.name)
-                break
-            }   
-            case 'first_name':{
-                fields['first_name'] = validateField(regex.names, e.target, e.target.name)
-                break
-            }   
-            case 'last_name':{
-                fields['last_name'] = validateField(regex.names, e.target, e.target.name)
-                break
-            }   
-            case 'email':{
-                fields.email = validateField(regex.email, e.target, e.target.name)
-                break
-            }   
-        }
+        e.preventDefault()
+        identifyField(this)
+        fields = validatedFields()
     }
 
     async function sendReservation(e){
@@ -87,9 +62,9 @@ const main = (function () {
                     icon.classList.remove('form_group_correct')
                 })
             }
-            else showErrorMessage(res.message)
+            else showErrorMessage(section, res.message)
         }
-        else showErrorMessage()
+        else showErrorMessage(section)
     }
 
     return {init}

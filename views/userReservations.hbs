@@ -1,9 +1,9 @@
 <main id="Reservation_main">
     {{>title}}
     <section id="sub_title">
-        <center><h2>Enter rut to see your reservation</h2></center>
+        <center><h2>Enter rut to see your reservations</h2></center>
     </section>
-    <section id="Reservation_form">
+    <section id="Reservation_form" class="form_section">
         <form action="#" class="form_reservations" method="get">
             {{!-- Rut --}}
             <div class="form_group" id="rut2_group">
@@ -16,7 +16,7 @@
             </div>
             {{!-- Message --}}
             <div class="form_message">
-                <p><i class="fa-solid fa-triangle-exclamation"></i> <b>Error:</b> user does not exist, check inserted data and try again</p>
+                <p><i class="fa-solid fa-triangle-exclamation"></i> <b>Error:</b> one or more fields are incomplete or incorrect, check them and try again</p>
             </div>     
                {{!-- Button --}}
             <div id="getReservations" class="form_group form_group_submit">

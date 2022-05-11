@@ -6,7 +6,7 @@ const router = express.Router()
 
 // Routes
 router.get('/', (_, res) => {
-    res.render('index', { title: 'Inicio' })
+    res.render('index', { title: 'Dancing With Death' })
 })
 
 router.get('/css/main', (_, res)=>{
