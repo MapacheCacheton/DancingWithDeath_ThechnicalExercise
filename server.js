@@ -32,9 +32,9 @@ app.use('/api/v1', apiRoutes)
 app.use('/user-reservations', userRoutes)
 
 // 404 Page
-app.get("*", (req, res) => {
+app.get("*", (_, res) => {
     res.render('404', { title: 'Oh no! a 404 :(' })
 })
 
 // Server Running
-app.listen(port, _ => console.log(`Server Running at: http://localhost:${port}/`))
+app.listen(port, _ => console.log(`Server Running at: byroncarvajal.xyz/`))
