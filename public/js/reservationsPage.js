@@ -71,7 +71,6 @@ const main = (function(){
             await editReservation(e.target.id)
         }
         else if(e.target.classList.contains('delete_btn')){
-            const section = document.querySelector('.form_section:not(.d_none)')
             const response = await deleteReservation(e.target.id)
             if(response.approved){
                 const success_message = document.querySelectorAll('.form_success_message')
@@ -87,7 +86,7 @@ const main = (function(){
                 if(!reservations.message){
                     renderUserReservations(reservations)
                 }
-                else renderUserReservations(reservations, section )
+                else renderUserReservations(reservations)
             }
         }
     }
@@ -126,10 +125,12 @@ const main = (function(){
         else showErrorMessage(section_form)
     }
     //Renders the "your reservations" table
-    function renderUserReservations(reservations, section='') {
+    function renderUserReservations(reservations) {
         const html = []
         if(!!reservations.message){
-            showErrorMessage(section, reservations.message)
+            section_rut.classList.remove('d_none')
+            section_form.classList.add('d_none')
+            showErrorMessage(section_rut, reservations.message)
         }
         else{
             reservations.forEach((reservation, index)=>{

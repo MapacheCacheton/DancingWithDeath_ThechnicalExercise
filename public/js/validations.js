@@ -18,7 +18,7 @@ const fields = {
 const form = document.querySelector('.form')
 
 
-async function filterAvailableHours(date){
+async function filterAvailableHours(date, section =''){
     identifyField(date)
     if(fields.date){
         const hours = await getUnavailableHours(date.value)
@@ -27,7 +27,7 @@ async function filterAvailableHours(date){
             renderAvailableHours(available_hours)
         }
         else if(hours.available) renderAvailableHours()
-        else showErrorMessage(hours.message)
+        else showErrorMessage(section, hours.message)
     }
 }
 //Returns an array with only available hours

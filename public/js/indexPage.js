@@ -33,7 +33,7 @@ const main = (function () {
     //Solucionar: 
     async function getAvailableHours(e){
         e.preventDefault()
-        await filterAvailableHours(this)
+        await filterAvailableHours(this, section)
         fields = validatedFields()
     }
 
